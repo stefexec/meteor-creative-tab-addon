@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "creativetab",
+  "version": "${version}",
+  "name": "Gurken's Creative Tab",
+  "description": "Tbh i stole it from MeteorAdditions",
+  "authors": [
+    "jfronny",
+    "Gurkenwerfer_"
+  ],
+  "contact": {
+    "repo": "https://github.com/MeteorDevelopment/meteor-addon-template"
+  },
+  "icon": "assets/creativetab/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "de.gurkenwerfer.creativetab.Addon"
+    ]
+  },
+  "mixins": [
+    "addon-template.mixins.json"
+  ],
+  "custom": {
+    "meteor-client:color": "153,255,153"
+  },
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=${mc_version}",
+    "meteor-client": "*"
+  }
+}
