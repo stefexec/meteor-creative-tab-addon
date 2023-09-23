@@ -5,8 +5,6 @@ import de.gurkenwerfer.creativetab.commands.AdditionsItemGroupCommand;
 import de.gurkenwerfer.creativetab.modules.AdditionsItemGroup;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.commands.Commands;
-import meteordevelopment.meteorclient.systems.modules.Category;
-import meteordevelopment.meteorclient.systems.modules.Modules;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -21,7 +19,7 @@ import org.slf4j.Logger;
 
 public class Addon extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
-    public static final Category CATEGORY = new Category("Gadgetry");
+    //public static final Category CATEGORY = new Category("Gadgetry");
 
     public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("creativetab", "general"));
 
@@ -43,12 +41,7 @@ public class Addon extends MeteorAddon {
     }
 
     @Override
-    public void onRegisterCategories() {
-        Modules.registerCategory(CATEGORY);
-    }
-
-    @Override
     public String getPackage() {
-        return "com.example.addon";
+        return "de.gurkenwerfer.creativetab";
     }
 }
