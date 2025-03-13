@@ -1,8 +1,10 @@
-package de.gurkenwerfer.creativetab.commands;
+package de.creativetab.addon.commands;
+
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import de.gurkenwerfer.creativetab.Addon;
-import de.gurkenwerfer.creativetab.modules.AdditionsItemGroup;
+
+import de.creativetab.addon.CreativeTab;
+import de.creativetab.addon.modules.AdditionsItemGroup;
 import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.commands.Command;
 import net.minecraft.command.CommandSource;
@@ -11,11 +13,9 @@ import net.minecraft.item.Items;
 
 import java.io.IOException;
 
-import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-
 public class AdditionsItemGroupCommand extends Command {
     public AdditionsItemGroupCommand() {
-        super("creativetab-item-group-add", "Add the held item to the Creative Tab item group", "item-group-add", "save-item");
+        super("meteoradditions-item-group-add", "Add the held item to the MeteorAdditions item group", "item-group-add", "save-item");
     }
 
     @Override
@@ -27,9 +27,12 @@ public class AdditionsItemGroupCommand extends Command {
                     error("You must hold an item to add it");
                     return SINGLE_SUCCESS;
                 }
-                info("Saved item: " + AdditionsItemGroup.addItem(stack));
+                AdditionsItemGroup.addItem(stack).ifPresentOrElse(
+                    s -> info("Saved item: " + s),
+                    () -> error("Could not add item")
+                );
             } catch (IOException e) {
-                Addon.LOG.error("Could not add item", e);
+                CreativeTab.LOG.error("Could not add item", e);
                 error("Could not add item");
             }
             return SINGLE_SUCCESS;
