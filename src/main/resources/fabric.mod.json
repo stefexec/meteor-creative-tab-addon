@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "creativetab",
   "version": "${version}",
-  "name": "Gurken's Creative Tab",
-  "description": "Tbh i stole it from MeteorAdditions",
+  "name": "Gurkeor Creative Tab Addon",
+  "description": "An addon to save/spawn custom items in creative.",
   "authors": [
-    "jfronny",
+    "JFronny",
     "Gurkenwerfer_"
   ],
   "contact": {
@@ -15,18 +15,18 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "de.gurkenwerfer.creativetab.Addon"
-    ]
+      "de.creativetab.addon.CreativeTab"
+    ],
+    "main": ["de.creativetab.addon.CreativeTab::gameInit"]
   },
   "mixins": [
-    "addon-template.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "153,255,153"
   },
   "depends": {
-    "java": ">=17",
-    "minecraft": ">=${mc_version}",
+    "java": ">=21",
+    "minecraft": ["${mc_version}"],
     "meteor-client": "*"
   }
 }
